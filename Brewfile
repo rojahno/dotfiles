@@ -1,0 +1,19 @@
+tap "homebrew/bundle"
+tap "homebrew/cask"
+tap "homebrew/core"
+brew "git"
+brew "git-extras"
+brew "git-flow"
+brew "legit"
+brew "yarn"
+cask "google-chrome"
+cask "intellij-idea"
+cask "insomnia"
+cask "visual-studio-code"
+cask "spotify"
+cask "pycharm"
+cask "gitkraken"
+cask "discord"
+
+
+
