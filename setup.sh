@@ -1,6 +1,4 @@
-GREEN=$'\e[0;32m'
-RED=$'\e[0;31m'
-NC=$'\e[0m'
+GREEN=$(tput setaf 2)
 
 which -s brew
 if [[ $? != 0 ]] ; then
@@ -19,14 +17,12 @@ brew bundle
 # Configurate the git-setup
 echo "Git config:"
 echo "Set your global username for git:"
-# read gitUserName
-# git config --global user.name $gitUserName
-git config --global user.name "Rojahno"
+read gitUserName
+git config --global user.name $gitUserName
 
 echo "Set your global email for git:"
-# read gitEmail
-# git config --global user.email $gitEmail
-git config --global user.email "andreas_sunde97@hotmail.com"
+read gitEmail
+git config --global user.email $gitEmail
 
 brew cleanup
 
@@ -61,16 +57,17 @@ defaults write NSGlobalDomain AppleShowAllExtensions -bool true
 defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
 
 #"Use column view in all Finder windows by default"
-defaults write com.apple.finder FXPreferredViewStyle Clmv
+defaults write com.apple.finder FXPreferredViewStyle Nlsv
 
 #"Setting the icon size of Dock items to 36 pixels for optimal size/screen-realestate"
 defaults write com.apple.dock tilesize -int 36
 
 #"Disable annoying backswipe in Chrome"
-defaults write com.google.Chrome AppleEnableSwipeNavigateWithScrolls -bool 
-false
+defaults write com.google.Chrome AppleEnableSwipeNavigateWithScrolls -bool false
 
 #"Setting screenshot format to PNG"
 defaults write com.apple.screencapture type -string "png"
+killall Dock
+killall Finder
 
-echo "{RED}The setup file is done!"
+echo ${GREEN}"The setup file is done!"
