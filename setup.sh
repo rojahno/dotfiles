@@ -14,6 +14,14 @@ fi
 # Install everything from the brewfile
 brew bundle
 
+# Add git command to the terminal
+echo 'eval $(/opt/homebrew/bin/brew shellenv)' >> /Users/$USER/.zprofile
+    eval $(/opt/homebrew/bin/brew shellenv)
+
+echo 'eval $(/opt/homebrew/bin/brew shellenv)' >> /Users/$USER/.zprofile
+
+eval $(/opt/homebrew/bin/brew shellenv)
+
 # Configurate the git-setup
 echo "Git config:"
 echo "Set your global username for git:"
@@ -64,6 +72,13 @@ defaults write com.apple.dock tilesize -int 36
 
 #"Disable annoying backswipe in Chrome"
 defaults write com.google.Chrome AppleEnableSwipeNavigateWithScrolls -bool false
+
+# Map keyboard shortcuts
+# $ defaults read com.apple.Automator NSUserKeyEquivalents
+# {
+#    "Move focus to next window" = "@'";
+# }
+# $ defaults write com.apple.Terminal NSUserKeyEquivalents -dict-add "About Terminal" '^@$a'
 
 #"Setting screenshot format to PNG"
 defaults write com.apple.screencapture type -string "png"
