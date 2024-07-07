@@ -40,7 +40,7 @@ echo "Setting Mac settings..."
 defaults write NSGlobalDomain NSQuitAlwaysKeepsWindows -bool false
 
 #"Disabling automatic termination of inactive apps"
-defaults write NSGlobalDomain NSDisableAutomaticTermination -bool true
+defaults write NSGlobalDomain NSDisableAutomaticTermination -bool false
 
 #"Allow text selection in Quick Look"
 defaults write com.apple.finder QLEnableTextSelection -bool TRUE
