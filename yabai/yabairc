@@ -1,0 +1,66 @@
+#!/usr/bin/env sh
+
+# === Setup scripting addition ===
+# *yabai --load-sa* is configured to run through sudo without a password
+sudo yabai --load-sa
+yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+
+# === Label your spaces ===
+yabai -m space 1 --label misc
+yabai -m space 2 --label dev
+yabai -m space 3 --label term
+yabai -m space 4 --label sim
+
+# === Per-space layouts ===
+yabai -m config --space misc layout # stack/floating for misc
+yabai -m config --space dev layout float
+yabai -m config --space term layout bsp
+yabai -m config --space sim layout bsp
+
+# How to find out what the applications name is:
+# yabai -m query --windows | jq '.[].app' | sort -u
+
+# === Rules for apps ===
+# Finder + System apps stay unmanaged (float in misc)
+yabai -m rule --add app="^Finder$" manage=off space=misc
+yabai -m rule --add app="^System Settings$" manage=off space=misc
+yabai -m rule --add app="^System Information$" manage=off space=misc
+yabai -m rule --add app="^Microsoft Outlook$" manage=off space=misc
+yabai -m rule --add app="^Zen$" manage=off space=misc
+yabai -m rule --add app="^Spotify$" manage=off space=misc
+
+# Zen (Cursor) → dev
+yabai -m rule --add app="^Code$" manage=off space=dev
+yabai -m rule --add app="^Cursor$" manage=off space=dev
+# Terminal
+yabai -m rule --add app="^iTerm2$" space=term
+
+# If you also use Xcode Simulator, adjust its actual app name:
+# yabai -m query --windows | jq '.[].app' should show "Simulator"
+yabai -m rule --add app="^Simulator$" space=sim
+
+# === Global settings ===
+yabai -m config window_border off
+yabai -m config auto_balance off
+yabai -m config split_ratio 0.50
+yabai -m config mouse_modifier alt
+yabai -m config mouse_action2 resize
+yabai -m config mouse_action1 move
+
+## Change how yabai looks
+yabai -m config layout bsp
+yabai -m config top_padding 2
+yabai -m config bottom_padding 2
+yabai -m config left_padding 2
+yabai -m config right_padding 2
+yabai -m config window_gap 10
+yabai -m display 2 --padding 20 --gap 10
+
+# Move existing windows to their designated spaces
+yabai -m query --windows | jq -r '.[] | select(.app == "Cursor") | .id' | xargs -I{} yabai -m window {} --space dev
+yabai -m query --windows | jq -r '.[] | select(.app == "Code") | .id' | xargs -I{} yabai -m window {} --space dev
+yabai -m query --windows | jq -r '.[] | select(.app == "iTerm2") | .id' | xargs -I{} yabai -m window {} --space term
+yabai -m query --windows | jq -r '.[] | select(.app == "Simulator") | .id' | xargs -I{} yabai -m window {} --space sim
+yabai -m query --windows | jq -r '.[] | select(.app == "Finder") | .id' | xargs -I{} yabai -m window {} --space misc
+yabai -m query --windows | jq -r '.[] | select(.app == "Spotify") | .id' | xargs -I{} yabai -m window {} --space misc
+echo "yabai configuration loaded.."
