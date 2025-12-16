@@ -12,7 +12,7 @@ yabai -m space 3 --label term
 yabai -m space 4 --label sim
 
 # === Per-space layouts ===
-yabai -m config --space misc layout # stack/floating for misc
+yabai -m config --space misc layout float # stack/floating for misc
 yabai -m config --space dev layout float
 yabai -m config --space term layout bsp
 yabai -m config --space sim layout bsp
@@ -28,10 +28,15 @@ yabai -m rule --add app="^System Information$" manage=off space=misc
 yabai -m rule --add app="^Microsoft Outlook$" manage=off space=misc
 yabai -m rule --add app="^Zen$" manage=off space=misc
 yabai -m rule --add app="^Spotify$" manage=off space=misc
+yabai -m rule --add app="^Notion$" manage=off space=misc
+yabai -m rule --add app="^Slack$" manage=off space=misc
+yabai -m rule --add app="^Company Portal$" manage=off space=misc
 
 # Zen (Cursor) → dev
 yabai -m rule --add app="^Code$" manage=off space=dev
 yabai -m rule --add app="^Cursor$" manage=off space=dev
+yabai -m rule --add app="^IntelliJ IDEA$" manage=off space=dev
+
 # Terminal
 yabai -m rule --add app="^iTerm2$" space=term
 
@@ -56,11 +61,4 @@ yabai -m config right_padding 2
 yabai -m config window_gap 10
 yabai -m display 2 --padding 20 --gap 10
 
-# Move existing windows to their designated spaces
-yabai -m query --windows | jq -r '.[] | select(.app == "Cursor") | .id' | xargs -I{} yabai -m window {} --space dev
-yabai -m query --windows | jq -r '.[] | select(.app == "Code") | .id' | xargs -I{} yabai -m window {} --space dev
-yabai -m query --windows | jq -r '.[] | select(.app == "iTerm2") | .id' | xargs -I{} yabai -m window {} --space term
-yabai -m query --windows | jq -r '.[] | select(.app == "Simulator") | .id' | xargs -I{} yabai -m window {} --space sim
-yabai -m query --windows | jq -r '.[] | select(.app == "Finder") | .id' | xargs -I{} yabai -m window {} --space misc
-yabai -m query --windows | jq -r '.[] | select(.app == "Spotify") | .id' | xargs -I{} yabai -m window {} --space misc
 echo "yabai configuration loaded.."

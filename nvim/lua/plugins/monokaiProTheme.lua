@@ -1,0 +1,59 @@
+return {}
+--
+-- return {
+--   {
+--     "loctvl842/monokai-pro.nvim",
+--     priority = 1000,
+--     config = function()
+--       require("monokai-pro").setup({
+--         transparent_background = false,
+--         terminal_colors = true,
+--         devicons = true,
+--         styles = {
+--           comment = { italic = true },
+--           keyword = { italic = true },
+--           type = { italic = true },
+--           storageclass = { italic = true },
+--           structure = { italic = true },
+--           parameter = { italic = true },
+--           annotation = { italic = true },
+--           tag_attribute = { italic = true },
+--         },
+--         filter = "machine",
+--         inc_search = "background",
+--         background_clear = {
+--           "toggleterm",
+--           "telescope",
+--           "renamer",
+--           "notify",
+--         },
+--         plugins = {
+--           bufferline = {
+--             underline_selected = false,
+--             underline_visible = false,
+--           },
+--           indent_blankline = {
+--             context_highlight = "default",
+--             context_start_underline = false,
+--           },
+--         },
+--         -- Add custom highlight overrides here
+--         override = function(c)
+--           return {
+--             TelescopeResultsTitle = { fg = c.base.cyan, bg = c.base.dimmed3 },
+--             TelescopePromptTitle = { fg = c.base.green, bg = c.base.dimmed3 },
+--             -- Make directory/folder colors brighter
+--             Directory = { fg = c.base.cyan, bold = true },
+--           }
+--         end,
+--       })
+--       vim.cmd([[colorscheme monokai-pro]])
+--     end,
+--   },
+--   {
+--     "LazyVim/LazyVim",
+--     opts = {
+--       colorscheme = "monokai-pro",
+--     },
+--   },
+-- }
