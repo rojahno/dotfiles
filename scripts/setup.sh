@@ -49,6 +49,10 @@ fi
 
 brew cleanup
 
+# Install tmux plugins
+echo "Installing tmux plugins..."
+"$DOTFILES_DIR/tmux/install-plugins.sh"
+
 # Create a folder for screenshots
 mkdir -p ~/Screenshots
 

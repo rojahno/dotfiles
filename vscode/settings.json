@@ -1,0 +1,23 @@
+{
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "editor.formatOnSave": true,
+  "github.copilot.nextEditSuggestions.enabled": true,
+  "explorer.confirmDragAndDrop": false,
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "gitlens.ai.model": "vscode",
+  "gitlens.ai.vscode.model": "copilot:gpt-4.1",
+  "diffEditor.ignoreTrimWhitespace": false,
+  "chat.agentSessionsViewLocation": "view",
+  "githubPullRequests.terminalLinksHandler": "github",
+  "workbench.colorTheme": "Atom One Dark",
+  "claudeCode.preferredLocation": "panel"
+}

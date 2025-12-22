@@ -20,6 +20,9 @@ done 2>/dev/null &
 # General UI/UX                                                               #
 ###############################################################################
 
+# Remap Caps Lock to Escape (useful for Vim)
+hidutil property --set '{"UserKeyMapping":[{"HIDKeyboardModifierMappingSrc":0x700000039,"HIDKeyboardModifierMappingDst":0x700000029}]}'
+
 # Disable the sound effects on boot
 sudo nvram SystemAudioVolume=" "
 

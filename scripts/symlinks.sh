@@ -57,5 +57,17 @@ create_symlink "$DOTFILES_DIR/brew/.Brewfile" "$HOME/.Brewfile"
 # SSH
 create_symlink "$DOTFILES_DIR/ssh/config" "$HOME/.ssh/config"
 
+# Tmux (XDG compliant location)
+create_symlink "$DOTFILES_DIR/tmux" "$HOME/.config/tmux"
+
+# Ghostty terminal
+create_symlink "$DOTFILES_DIR/ghostty/config" "$HOME/Library/Application Support/com.mitchellh.ghostty/config"
+
+# VS Code
+create_symlink "$DOTFILES_DIR/vscode/settings.json" "$HOME/Library/Application Support/Code/User/settings.json"
+
+# Caps Lock to Escape LaunchAgent (for Vim)
+create_symlink "$DOTFILES_DIR/macos/com.local.CapsLockToEscape.plist" "$HOME/Library/LaunchAgents/com.local.CapsLockToEscape.plist"
+
 echo ""
 echo -e "${GREEN}Dotfiles symlinks created successfully!${NC}"

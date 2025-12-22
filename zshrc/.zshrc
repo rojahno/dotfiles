@@ -82,6 +82,45 @@ plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
+# Carapace completions with styling
+export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense'
+source <(carapace _carapace)
+
+# Catppuccin Mocha colors for completions
+local mauve=$'\e[38;2;203;166;247m'      # #cba6f7
+local blue=$'\e[38;2;137;180;250m'       # #89b4fa
+local sky=$'\e[38;2;137;220;235m'        # #89dceb
+local teal=$'\e[38;2;148;226;213m'       # #94e2d5
+local green=$'\e[38;2;166;227;161m'      # #a6e3a1
+local yellow=$'\e[38;2;249;226;175m'     # #f9e2af
+local peach=$'\e[38;2;250;179;135m'      # #fab387
+local red=$'\e[38;2;243;139;168m'        # #f38ba8
+local pink=$'\e[38;2;245;194;231m'       # #f5c2e7
+local lavender=$'\e[38;2;180;190;254m'   # #b4befe
+local text=$'\e[38;2;205;214;244m'       # #cdd6f4
+local subtext=$'\e[38;2;166;173;200m'    # #a6adc8
+local surface=$'\e[48;2;49;50;68m'       # #313244 (background)
+local reset=$'\e[0m'
+
+# Completion styling - Catppuccin themed
+zstyle ':completion:*' menu select                                       # Interactive menu selection
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'                   # Case insensitive matching
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"                  # Colorize files
+zstyle ':completion:*' group-name ''                                     # Group completions by type
+zstyle ':completion:*' format "${mauve}── %d ──${reset}"                 # Mauve headers
+zstyle ':completion:*:descriptions' format "${blue}%d${reset}"           # Blue descriptions
+zstyle ':completion:*:corrections' format "${yellow}%d (errors: %e)${reset}"  # Yellow corrections
+zstyle ':completion:*:warnings' format "${red}── No matches found ──${reset}" # Red warnings
+zstyle ':completion:*:messages' format "${teal}%d${reset}"               # Teal messages
+zstyle ':completion:*:default' list-prompt "${subtext}%S%M matches%s${reset}"
+zstyle ':completion:*' select-prompt "${lavender}%SScrolling: %p%s${reset}"
+zstyle ':completion:*:git:*' group-order 'main commands' 'alias commands' 'external commands'
+
+# Catppuccin colors for specific completion types
+zstyle ':completion:*:*:kill:*:processes' list-colors "=(#b) #([0-9]#)*=${peach}=${red}"
+zstyle ':completion:*:*:*:*:hosts' list-colors "=${sky}"
+zstyle ':completion:*:*:*:*:users' list-colors "=${pink}"
+
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -139,7 +178,7 @@ alias kpf='kubectl port-forward'
 alias gdlb='git branch | grep -v "main\|master" | xargs git branch -D'
 alias gpmpr='gitPrefix=$(git remote get-url origin | sed -E "s/(git@github.com|\.git|https:\/\/github.com)//g"); git push && open "https://github.com/$gitPrefix/compare/$(git branch --show-current)?expand=1"'
 alias gc='git checkout'
-alias gparent="git show-branch | grep '*' | grep -v \"$(git rev-parse --abbrev-ref HEAD)\" | head -n1 | sed 's/.*\\[\\(.*\\)\\].*/\\1/' | sed 's/[\\^~].*//' #"
+alias gparent='git show-branch | grep "*" | grep -v "$(git rev-parse --abbrev-ref HEAD 2>/dev/null)" | head -n1 | sed "s/.*\\[\\(.*\\)\\].*/\\1/" | sed "s/[\\^~].*//" #'
 
 # Vim
 alias vim="nvim"
@@ -152,6 +191,9 @@ alias jv="java --version"
 
 
 export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"
+
+# Initialize zoxide (smart cd)
+eval "$(zoxide init zsh)"
 
 ### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
 export PATH="/Users/andreas/.rd/bin:$PATH"
