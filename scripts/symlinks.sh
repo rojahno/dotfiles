@@ -57,6 +57,9 @@ create_symlink "$DOTFILES_DIR/brew/.Brewfile" "$HOME/.Brewfile"
 # SSH
 create_symlink "$DOTFILES_DIR/ssh/config" "$HOME/.ssh/config"
 
+# Git global gitignore
+create_symlink "$DOTFILES_DIR/git/.gitignore_global" "$HOME/.gitignore_global"
+
 # Tmux (XDG compliant location)
 create_symlink "$DOTFILES_DIR/tmux" "$HOME/.config/tmux"
 

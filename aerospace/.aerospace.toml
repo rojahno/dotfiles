@@ -97,6 +97,9 @@ automatically-unhide-macos-hidden-apps = false
     alt-comma = 'layout accordion horizontal vertical'
     alt-f = 'layout floating tiling'
 
+    # See: https://nikitabobko.github.io/AeroSpace/commands#fullscreen
+    alt-shift-f = 'fullscreen'
+
     # See: https://nikitabobko.github.io/AeroSpace/commands#focus
     alt-h = 'focus left'
     alt-j = 'focus down'

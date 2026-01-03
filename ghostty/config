@@ -79,7 +79,7 @@ window-save-state = always
 
 # macOS specific
 macos-titlebar-style = tabs
-macos-option-as-alt = true
+macos-option-as-alt = left
 
 # =============================================================================
 # Cursor

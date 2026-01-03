@@ -1,6 +1,16 @@
 return {
   "snacks.nvim",
   opts = {
+    explorer = {
+      replace_netrw = true,
+    },
+    picker = {
+      sources = {
+        explorer = {
+          ignored = true,
+        },
+      },
+    },
     dashboard = {
       preset = {
         pick = function(cmd, opts)

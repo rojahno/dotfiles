@@ -19,5 +19,6 @@
   "chat.agentSessionsViewLocation": "view",
   "githubPullRequests.terminalLinksHandler": "github",
   "workbench.colorTheme": "Atom One Dark",
-  "claudeCode.preferredLocation": "panel"
+  "claudeCode.preferredLocation": "panel",
+  "git.openRepositoryInParentFolders": "always"
 }
