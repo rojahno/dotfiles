@@ -78,7 +78,8 @@ zstyle ':omz:update' mode auto      # update automatically without asking
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions zsh-syntax-highlighting vi-mode)
+plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
+# vi-mode disabled - was causing right Option key issues
 
 source $ZSH/oh-my-zsh.sh
 
@@ -194,6 +195,11 @@ export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"
 
 # Initialize zoxide (smart cd)
 eval "$(zoxide init zsh)"
+
+# Set terminal tab title to current folder name
+precmd() {
+  print -Pn "\e]0;%1~\a"
+}
 
 ### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
 export PATH="/Users/andreas/.rd/bin:$PATH"

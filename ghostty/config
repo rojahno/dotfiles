@@ -79,7 +79,7 @@ window-save-state = always
 
 # macOS specific
 macos-titlebar-style = tabs
-macos-option-as-alt = left
+macos-option-as-alt = false
 
 # =============================================================================
 # Cursor
@@ -99,3 +99,10 @@ clipboard-paste-protection = false
 confirm-close-surface = false
 mouse-hide-while-typing = true
 scrollback-limit = 10000
+
+# =============================================================================
+# Keybindings
+# =============================================================================
+# Unbind default macOS alt+arrow bindings to allow alt to work as meta
+keybind = alt+left=unbind
+keybind = alt+right=unbind

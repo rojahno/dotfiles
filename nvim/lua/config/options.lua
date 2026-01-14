@@ -4,3 +4,10 @@
 vim.g.snacks_animate = false
 vim.g.inlay_hints_enabled = false
 vim.g.lazyvim_inlay_hints = false
+
+-- Persist folds between sessions
+vim.opt.viewoptions = { "folds", "cursor", "curdir" }
+
+-- Set window title to the current folder name
+vim.opt.title = true
+vim.opt.titlestring = "%{fnamemodify(getcwd(), ':t')}"
