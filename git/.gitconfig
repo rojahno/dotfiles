@@ -1,0 +1,12 @@
+[user]
+        name = rojahno
+        email = andreas_sunde97@hotmail.com
+        signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEjwTWmY/Yy5WoM1+5othn29Kd2U6q9ZNH4yiwmHFxSl
+[gpg]
+        format = ssh
+[gpg "ssh"]
+        program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
+[commit]
+        gpgsign = true
+[core]
+        excludesfile = ~/.gitignore_global
