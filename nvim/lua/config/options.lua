@@ -5,9 +5,12 @@ vim.g.snacks_animate = false
 vim.g.inlay_hints_enabled = false
 vim.g.lazyvim_inlay_hints = false
 
--- Persist folds between sessions
-vim.opt.viewoptions = { "folds", "cursor", "curdir" }
+-- Persist folds between sessions (exclude foldmethod so expr folding still works)
+vim.opt.viewoptions = { "cursor", "folds" }
 
 -- Set window title to the current folder name
 vim.opt.title = true
 vim.opt.titlestring = "%{fnamemodify(getcwd(), ':t')}"
+
+-- Auto-save modified buffers (avoids prompts during LSP rename across files)
+vim.opt.autowriteall = true

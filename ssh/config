@@ -1,4 +1,4 @@
-Include /Users/andreas/.colima/ssh_config
+# Include /Users/andreas/.colima/ssh_config
 
 # SSH Config
 
@@ -6,18 +6,18 @@ Include /Users/andreas/.colima/ssh_config
 
 # Default settings for all hosts
 
-Host \*
-AddKeysToAgent yes
-UseKeychain yes
-IdentityFile ~/.ssh/id_ed25519
-
-# GitHub
-
-Host github.com
-HostName github.com
-User git
-IdentityFile ~/.ssh/id_ed25519
-
+# Host \*
+# AddKeysToAgent yes
+# UseKeychain yes
+# IdentityFile ~/.ssh/id_ed25519
+#
+# # GitHub
+#
+# Host github.com
+# HostName github.com
+# User git
+# IdentityFile ~/.ssh/id_ed25519
+#
 # GitLab (uncomment if needed)
 
 # Host gitlab.com
@@ -49,3 +49,6 @@ IdentityFile ~/.ssh/id_ed25519
 # Port 22
 
 # IdentityFile ~/.ssh/id_ed25519
+
+Host *
+	IdentityAgent "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"

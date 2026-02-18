@@ -107,10 +107,6 @@ automatically-unhide-macos-hidden-apps = false
     alt-l = 'focus right'
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#move
-    alt-shift-h = 'move left'
-    alt-shift-j = 'move down'
-    alt-shift-k = 'move up'
-    alt-shift-l = 'move right'
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#resize
     alt-shift-minus = 'resize smart -50'
@@ -185,19 +181,19 @@ run = ["move-node-to-workspace 1", "layout floating"]
 # Workspace 2: IDEs (Xcode, IntelliJ, Rider, VS Code)
 [[on-window-detected]]
 if.app-id = 'com.apple.dt.Xcode'
-run = "move-node-to-workspace 2"
+run = ["move-node-to-workspace 2", "layout floating"]
 
 [[on-window-detected]]
 if.app-id = 'com.jetbrains.intellij'
-run = "move-node-to-workspace 2"
+run = ["move-node-to-workspace 2", "layout floating"]
 
 [[on-window-detected]]
 if.app-id = 'com.jetbrains.rider'
-run = "move-node-to-workspace 2"
+run = ["move-node-to-workspace 2", "layout floating"]
 
 [[on-window-detected]]
 if.app-id = 'com.microsoft.VSCode'
-run = "move-node-to-workspace 2"
+run = ["move-node-to-workspace 2", "layout floating"]
 
 # Workspace 3: Terminal (iTerm2)
 [[on-window-detected]]

@@ -39,15 +39,6 @@ create_symlink "$DOTFILES_DIR/zshrc/.p10k.zsh" "$HOME/.p10k.zsh"
 # Neovim
 create_symlink "$DOTFILES_DIR/nvim" "$HOME/.config/nvim"
 
-# Aerospace (window manager)
-create_symlink "$DOTFILES_DIR/aerospace/.aerospace.toml" "$HOME/.aerospace.toml"
-
-# Yabai (window manager)
-# create_symlink "$DOTFILES_DIR/yabai/yabairc" "$HOME/.config/yabai/yabairc"
-
-# skhd (hotkey daemon)
-# create_symlink "$DOTFILES_DIR/skhd/skhdrc" "$HOME/.config/skhd/skhdrc"
-
 # JetBrains IDEs (IntelliJ, Rider, etc.)
 create_symlink "$DOTFILES_DIR/jetbrains/.ideavimrc" "$HOME/.ideavimrc"
 

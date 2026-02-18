@@ -1,5 +1,0 @@
--- return {
---   "Hoffs/omnisharp-extended-lsp.nvim",
---   enabled = false, -- Add this line to disable the plugin
---   -- other configurations...
--- }

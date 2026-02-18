@@ -190,6 +190,15 @@ alias vi="nvim"
 alias j21='export JAVA_HOME=/opt/homebrew/opt/openjdk@21 && export PATH=$JAVA_HOME/bin:$PATH && hash -r'
 alias jv="java --version"
 
+# Tmux
+alias tl='tmux list-sessions'
+alias tn='tmux new-session'
+alias ta='tmux attach'
+alias tk='tmux kill-session'
+alias td='tmux detach'
+alias tns='tmux new-session -s'
+alias tas='tmux attach-session -t'  
+
 
 export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"
 

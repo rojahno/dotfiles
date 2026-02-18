@@ -18,22 +18,36 @@ vim.api.nvim_create_autocmd("FileType", {
 -- Save and restore folds/view state between sessions
 local view_group = vim.api.nvim_create_augroup("RememberFolds", { clear = true })
 
-vim.api.nvim_create_autocmd("BufWinLeave", {
+vim.api.nvim_create_autocmd("BufWinEnter", {
   group = view_group,
-  pattern = "?*",
+  pattern = "*",
   callback = function()
     if vim.bo.buftype == "" and vim.fn.expand("%") ~= "" then
+      -- Small delay to let expr folding initialize first, then load saved fold states
+      vim.defer_fn(function()
+        vim.cmd("silent! loadview")
+      end, 50)
+    end
+  end,
+})
+
+vim.api.nvim_create_autocmd("BufWinLeave", {
+  group = view_group,
+  pattern = "*",
+  callback = function()
+    if vim.bo.buftype == "" and vim.bo.filetype ~= "" and vim.fn.expand("%") ~= "" then
       vim.cmd("silent! mkview")
     end
   end,
 })
 
-vim.api.nvim_create_autocmd("BufWinEnter", {
+-- Also save view when writing buffer (more reliable)
+vim.api.nvim_create_autocmd("BufWritePost", {
   group = view_group,
-  pattern = "?*",
+  pattern = "*",
   callback = function()
-    if vim.bo.buftype == "" and vim.fn.expand("%") ~= "" then
-      vim.cmd("silent! loadview")
+    if vim.bo.buftype == "" and vim.bo.filetype ~= "" and vim.fn.expand("%") ~= "" then
+      vim.cmd("silent! mkview")
     end
   end,
 })
