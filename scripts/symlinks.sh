@@ -67,5 +67,17 @@ create_symlink "$DOTFILES_DIR/macos/com.local.CapsLockToEscape.plist" "$HOME/Lib
 # Scripts
 create_symlink "$DOTFILES_DIR/scripts/mac-active.sh" "$HOME/.local/bin/mac-active"
 
+# GitHub Copilot customizations (skills, agents, plugins)
+# Skills are stored in ~/.agents/skills/ (used by VS Code Copilot)
+create_symlink "$DOTFILES_DIR/copilot/skills" "$HOME/.agents/skills"
+create_symlink "$DOTFILES_DIR/copilot/.skill-lock.json" "$HOME/.agents/.skill-lock.json"
+# Installed plugins are stored in ~/.copilot/installed-plugins/
+create_symlink "$DOTFILES_DIR/copilot/installed-plugins" "$HOME/.copilot/installed-plugins"
+
+# Copilot agents (user-level, available in all projects via @agent-name)
+PROMPTS_DIR="$HOME/Library/Application Support/Code/User/prompts"
+create_symlink "$DOTFILES_DIR/copilot/installed-plugins/awesome-copilot/csharp-dotnet-development/agents/expert-dotnet-software-engineer.md" "$PROMPTS_DIR/expert-dotnet-software-engineer.md"
+create_symlink "$DOTFILES_DIR/copilot/installed-plugins/awesome-copilot/doublecheck/agents/doublecheck.md" "$PROMPTS_DIR/doublecheck.md"
+
 echo ""
 echo -e "${GREEN}Dotfiles symlinks created successfully!${NC}"
