@@ -6,7 +6,8 @@ vim.g.inlay_hints_enabled = false
 vim.g.lazyvim_inlay_hints = false
 
 -- Persist folds between sessions (exclude foldmethod so expr folding still works)
-vim.opt.viewoptions = { "cursor", "folds" }
+-- Note: "cursor" is intentionally excluded to avoid overriding LSP navigation (gd/gr)
+vim.opt.viewoptions = { "folds" }
 
 -- Set window title to the current folder name
 vim.opt.title = true

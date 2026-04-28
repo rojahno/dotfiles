@@ -161,6 +161,7 @@ fn cfg () {
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # PATHS
+export PATH="$HOME/.local/bin:$PATH"
 export PATH="$PATH:/usr/local/bin/node"
 
 export NVM_DIR="$HOME/.nvm"
@@ -185,6 +186,9 @@ alias gparent='git show-branch | grep "*" | grep -v "$(git rev-parse --abbrev-re
 alias vim="nvim"
 alias vi="nvim"
 
+# Scripts
+alias mac-active="$HOME/Projects/dotfiles/scripts/mac-active.sh"
+
 
 # Java
 alias j21='export JAVA_HOME=/opt/homebrew/opt/openjdk@21 && export PATH=$JAVA_HOME/bin:$PATH && hash -r'
@@ -197,7 +201,21 @@ alias ta='tmux attach'
 alias tk='tmux kill-session'
 alias td='tmux detach'
 alias tns='tmux new-session -s'
-alias tas='tmux attach-session -t'  
+alias tas='tmux attach-session -t'
+alias tnc='tmux new-session -s "$(basename "$PWD" | tr ".:" "__")"'
+
+# Auto-attach to a tmux session named after the current folder when cd'ing into it
+function chpwd() {
+  local session_name
+  session_name=$(basename "$PWD" | tr ".:" "__")
+  if tmux has-session -t "=$session_name" 2>/dev/null; then
+    if [[ -n "$TMUX" ]]; then
+      tmux switch-client -t "=$session_name"
+    else
+      tmux attach-session -t "=$session_name"
+    fi
+  fi
+}
 
 
 export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"
@@ -210,6 +228,3 @@ precmd() {
   print -Pn "\e]0;%1~\a"
 }
 
-### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
-export PATH="/Users/andreas/.rd/bin:$PATH"
-### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)

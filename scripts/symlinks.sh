@@ -64,5 +64,8 @@ create_symlink "$DOTFILES_DIR/vscode/settings.json" "$HOME/Library/Application S
 # Caps Lock to Escape LaunchAgent (for Vim)
 create_symlink "$DOTFILES_DIR/macos/com.local.CapsLockToEscape.plist" "$HOME/Library/LaunchAgents/com.local.CapsLockToEscape.plist"
 
+# Scripts
+create_symlink "$DOTFILES_DIR/scripts/mac-active.sh" "$HOME/.local/bin/mac-active"
+
 echo ""
 echo -e "${GREEN}Dotfiles symlinks created successfully!${NC}"

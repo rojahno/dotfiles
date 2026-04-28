@@ -26,5 +26,14 @@
   "[html]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+  "git.confirmSync": false,
+  "terminal.integrated.shellIntegration.enabled": false,
   "chat.viewSessions.orientation": "stacked",
+  "editor.accessibilitySupport": "off",
+  "mssql.connectionGroups": [
+    {
+      "name": "ROOT",
+      "id": "ROOT"
+    }
+  ],
 }
